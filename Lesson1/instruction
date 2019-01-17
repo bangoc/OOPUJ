@@ -1,0 +1,39 @@
+Object oriented programming using Java
+Lesson 1. Install the JDK and try simple examples
+
+1. Obtaining the Java Development Kit
+It is recommended that you use JDK 9 (or later).
+The JDK can be downloaded from 
+https://www.oracle.com/technetwork/java/javase/downloads/index.html
+Just follow the instruction for the type of computer that you have.
+The JDK supplies two primary program:
+- javac is the Java compiler
+- java is the Java interpreter (applicaion launcher)
+The JDK runs in the command prompt environment. It is not a windowed application. It is not an integrated development environment.
+2. A first simple program
+class Example {
+  public static void main(String args[]) {
+    System.out.println("Java is cool!");
+  }
+}
+You will follow these three steps:
+1. Enter the program
+2. Compile the program
+3. Run the program
+
+Step 1. Enter the program
+This source can be downloaded from 
+https://github.com/bangoc/OOPUJ/blob/master/Example.java
+However you can enter the programs by yourself using a text editor.
+For Java the name you give to a source file is very important. For this example, the name of the source file should be Example.java.
+In Java, a source file is officially called a compilation unit. The Java compiler requires that a source file use the .java extension. The name of the main class should match the name of the file that holds the program. Java is case sensitive.
+Step 2. Compile the program
+javac Example.java
+The javac compiler creates a file called Example.class that contains the bytecode version of the program.
+Step 3. Run the program
+To run the program you must use the Java interpreter
+java Example
+When the program is run, the following output is displayed:
+Java is cool!
+2. Experiment with simple examples
+Compile and run other examples in 
