@@ -1,0 +1,75 @@
+Object oriented programming using Java
+Lesson 2. Introducing classes, objects, and methods
+
+A class is a template that defines the form of an object. It specifies both the data and the code that will operate on that data. Java uses a class specification to construct objects. Objects are instances of a class.
+The general form of a class is:
+  class classname {
+    // declare instance variables
+    type var1;
+    type var2;
+    // ...
+    type varN;
+
+    // declare methods
+    ret-type method1(parameters) {
+      // body of method
+    }
+    ret-type method2(parameters) {
+      // body of method
+    }
+    // ...
+    ret-type methodN(parameters) {
+      // body of method
+    }
+  }
+A well-designed class should define one and only one logical entity.
+A simple class is provided in VehicleDemo.java.
+
+Create an object:
+  Vehicle minivan = new Vehicle();
+
+
+Reference variables and assignment:
+  Vehicle car1 = new Vehicle();
+  Vehicle car2 = car1;
+Now car1 and car2 will refer to the same object.
+  car1.kpl = 30;
+  System.out.println(car1.kpl);
+  System.out.println(car2.kpl);
+display the same value 30.
+
+Data-only classed are perfectly valid, most classes will have methods. Methods are subroutines that manipulate the data defined by the class and, in many cases, provide access to that data.
+In well-written Java code, each method performs only once task.
+The general form of a method is:
+  ret-type name(parameter-list) {
+    // body of method
+  }
+
+Modified version of the Vehicle class using methods are provided in VehMethodDemo.java and FuelComp.java.
+
+If the method does not return a value, its return type must be void. If the methods has no parameters, the parameter-list will be empty.
+
+Constructors
+In the preceding examples, the instance variables of each Vehicle object had to be set manually using a sequence of statements. An approach like this is error prone, there is a better way to accomplish this task: the constructor.
+A constructor initialized an object when it is created. It has the same name as its class and is syntactically similar to a method. However, constructors have no explicit return type.
+
+A class with a simple constructor to initialize its instance variables with default values is provided in ConsDemo.java.
+Some more examples of constructor usage can be found in ParmConsDemo.java and VehConsDemo.java.
+
+All classes have constructors, whether you define one or not, because Java automatically provides a default constructor. Once you define your own constructor, the default constructor is no longer used.
+
+The new operator
+The new operator can be used to create an object of any class type. The new operator returns a reference to the newly created object. The general form of the new operator is:
+  class-var = new class-name(arg-list);
+
+
+Garbage collection
+Java's garbage collection system reclaims objects automatically. When no references to an object exist, that object is assumed to be no longer needed, and the memory occupied by the object is released.
+
+The this keyword
+When a method is called, it is automatically passed an implicit argument that is a reference to the invoking object. This reference is called this.
+The this keyword has some important uses. For example, the Java syntax permits the name of a parameter or a local variable to be the same as the name of instance variable. When this happens, the local name hides the instance variable. You can gain access to the hidden instance variable by referring to it through this.
+
+An example with the usage of the this keyword is provided in DemoPwr.java.
+
+The class Vehicle and its instance can be modeled in UML as in vehicle.png and vehicle_instances.png
