@@ -1,0 +1,67 @@
+Object oriented programming using Java
+Lesson 3. More Data types and operators
+
+One-dimensional Array
+The general form to declare a one-dimensional array:
+  type array-name[] = new type[size];
+An individual element within an array is accessed by use of an index. An index describes the position of an element within an array. In Java, all arrays have zero as the index of their first element.
+Arrays can be initialized when they are created. The general form for initializing a one dimensional array is:
+  type array-name[] = {val1, val2, ..., valN};
+An example of array initialization if provided in
+    MinMax.java
+
+Array boundaries are strictly enforced in Java. It is a run-time error to overrun or underrun the end of an array. You can confirm yourself with
+    ArrayErr.java.
+
+
+Multidimensional arrays
+    TwoD.java
+
+Irregular arrays
+The use or irregular multidimensional arrays is not recommended for most applications. However, irregular arrays can be used effectively in some situations. For example, if you need a very large two dimensional array that is sparsely populated.
+    Ragged.java
+
+Initializing multidimensional arrays
+type-specifier array_name[][] = {
+  {val, val, val, ..., val},
+  {val, val, val, ..., val},
+  ...
+  {val, val, val, ..., val}
+};
+    Squares.java
+
+Assigning array references
+As with other objects, when you assign one array reference variable to another, you are simply changing what object that variable refers to. No copy of the array will be made, the contents of one array will not be copied to the other.
+    AssignARef.java
+
+The length member
+Because arrays are implemented as objects, each array has associated with a length instance variable that contains the number of elements that the array can hold.
+    LengthDemo.java
+
+The For-Each Style for Loop
+When working with arrays, it is so common to encounter situations in which each element in an array must be examined, from start to finish. Java defines a second form of the for loop that streamlines this operation.
+The general form of the for-each style for is shown here:
+  for(type itr-var: collection)
+    statement-block
+
+    ForEach.java
+
+There is one important point to understand about the for-each style for loop. Its iteration variable is "read-only". An assignment to the iteration variable has no effect on the underlying array.
+    NoChange.java
+
+Strings
+In some other programming languages, a string is an array of characters. This is not the case with Java. In Java, strings are objects.
+    StringDemo.java
+    StrOps.java
+
+Strings are immutable
+The contents of a String object are immutable. That is, one created the character sequence that makes up the string cannot be altered. When you need a string that is a variation on one that already exists, simply create a new string that contains the desired changes.
+
+Using a String to Control a switch statement
+From JDK 7, a String can be used to control a switch statement.
+    StringSwitch.java
+
+Using Command-Line Arguments
+Now that you know about the String class, you can understand the args parameter to main().
+    CLDemo.java
+    Phone.java

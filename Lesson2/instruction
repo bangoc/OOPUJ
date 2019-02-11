@@ -49,6 +49,7 @@ Modified version of the Vehicle class using methods are provided in VehMethodDem
 
 If the method does not return a value, its return type must be void. If the methods has no parameters, the parameter-list will be empty.
 
+
 Constructors
 In the preceding examples, the instance variables of each Vehicle object had to be set manually using a sequence of statements. An approach like this is error prone, there is a better way to accomplish this task: the constructor.
 A constructor initialized an object when it is created. It has the same name as its class and is syntactically similar to a method. However, constructors have no explicit return type.
@@ -57,6 +58,7 @@ A class with a simple constructor to initialize its instance variables with defa
 Some more examples of constructor usage can be found in ParmConsDemo.java and VehConsDemo.java.
 
 All classes have constructors, whether you define one or not, because Java automatically provides a default constructor. Once you define your own constructor, the default constructor is no longer used.
+
 
 The new operator
 The new operator can be used to create an object of any class type. The new operator returns a reference to the newly created object. The general form of the new operator is:
