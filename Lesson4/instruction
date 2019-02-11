@@ -1,89 +1,67 @@
 Object oriented programming using Java
-Lesson 4. A Closer look at Methods and classes
+Lesson 3. More Data types and operators
 
-Controlling access to class members
-In its support for encapsulation, the class provides two major benefits. First, it links data with the code that manipulates it. Second, it provides the means by which access to members can be controlled.
+One-dimensional Array
+The general form to declare a one-dimensional array:
+  type array-name[] = new type[size];
+An individual element within an array is accessed by use of an index. An index describes the position of an element within an array. In Java, all arrays have zero as the index of their first element.
+Arrays can be initialized when they are created. The general form for initializing a one dimensional array is:
+  type array-name[] = {val1, val2, ..., valN};
+An example of array initialization if provided in
+    MinMax.java
 
-
-Java's access modifiers
-Member access control is achived through the use of three access modifiers: public, private, and protected. If no access modifier is used, the default access is assumed.
-When a member of a class is modified by the public specifier, the member can be accessed by any other code in a program.
-When a member of a class is specified as private, that member can be accessed only by other members of its class.
-The protected modifier applies only when inheritance is involved and is described later.
-The default access setting is the same as public unless a program is broken down into packages. A package is, essentially, a grouping of classes. Packages are both organizational and an access control feature, its detail will be provided later.
-
-
-To understand the effects of public and private, consider
-    AccessDemo.java
-
-In the real world, restricting access to members - especially instance variables - is an important part of successful object-oriented programming.
-An example of using access control to provide a safe access to array elements is provided in
-    FSDemo.java
-
-Pass objects to methods
-It is both correct and common to pass objects to methods.
-    PassOb.java
-
-How arguments are passed
-When you pass a primitive type, such as int or double, to a method, it is passed by value. Thus what occurs to the parameter that receives the argument has no effect outside the method.
-    CallByValue.java
-
-When you pass an object to a method, objects are implicitly passed by reference. As a result, the parameter that receives it will refer to the same object as that referred to by the argument. This effectively means that objects are passed to method by use of call-by-reference. Changes to the object inside the method do affect the object used as an argument.
-    PassObRef.java
-
-Returning objects
-A method can return any type of data, including class types.
-    ErrMsg.java
-
-Method Overloading
-In Java, two or more methods within the same class can share the same name, as long as their parameter declarations are different.
-There is one important restriction: the type and/or number of the parameters of each overloaded method must differ. It is not sufficient for two methods to differ only in their return types.
-When an overloaded method is called, the version of the method whose parameters match the arguments is executed.
-    OverloadDemo.java
-
-Automatic conversions apply only if there is no direct match between a parameter and an argument.
-    TypeConv.java
-
-Overloading Constructors
-Like methods, constructors can also be overloaded. Doing so allows you to construct objects in a variety of ways.
-    OverloadConsDemo.java
-
-One common reason that constructors are overloaded is to allow one object to initialize another. It is often useful to provide a constructor that makes a copy of an object.
-    SumDemo.java
-
-Understanding static
-It is possible to create a member that can be used without reference to a specific instance. When a member is declared static, it can be accessed before any objects of its class are created, and without reference to any object. Outside the class, to use a static member, you need only specify the name of its class followed by the dot operator.
-Variables declared as static are, essentially, global variables. When an object is declared, no copy of a static variable is made. Instead, all instances of the class share the same static variable.
-    SDemo.java
-    SMethodDemo.java
-
-Methods declared static have several restrictions:
-They can directly call only other static methods in their class
-They can directly access only static variables in their class
-They do not have a this reference
-    StaticError.java
-
-Sometimes a class will require some type of initialization before it is ready to create objects or initialize certain static variables before any of the class' static methods are used. To handle these types of situations, Java allows you to declare a static block. A static block is executed when the class is first loaded.
-    StaticBlockDemo.java
+Array boundaries are strictly enforced in Java. It is a run-time error to overrun or underrun the end of an array. You can confirm yourself with
+    ArrayErr.java.
 
 
-Nested and Inner classes
-In Java, you can define a nested class. This is a class that is declared within another class. It is also possible to declare a nested class that is local to a block.
-There are two general types of nested classes: those that are proceded by the static modifier and those that are not. But we will concern only the non-static variety. This type of nested class is also called an inner class. It has access to all of the variables and methods of its outer class.
-    NestedClassDemo.java
+Multidimensional arrays
+    TwoD.java
 
-Varargs method
-A vairable-length argument is specified by three periods (...).
-    VarArgs.java
+Irregular arrays
+The use or irregular multidimensional arrays is not recommended for most applications. However, irregular arrays can be used effectively in some situations. For example, if you need a very large two dimensional array that is sparsely populated.
+    Ragged.java
 
-A method can have "normal" parameters along with a variable-length parameter. However, the variable-length parameter must be the last parameter declared by the method.
-    VarArgsError.java
+Initializing multidimensional arrays
+type-specifier array_name[][] = {
+  {val, val, val, ..., val},
+  {val, val, val, ..., val},
+  ...
+  {val, val, val, ..., val}
+};
+    Squares.java
 
-Overloading Varargs methods
-You can overload a method that takes a variable-length argument.
-    VarArgsOverload.java
+Assigning array references
+As with other objects, when you assign one array reference variable to another, you are simply changing what object that variable refers to. No copy of the array will be made, the contents of one array will not be copied to the other.
+    AssignARef.java
 
-Ambiguity
-It is possible to create an ambiguous call to an overloaded varargs method. When there are more than one methods match a call.
-    vaTest() call in VarArgsOverload.java
-When this happens, sometimes you will need to forego overloading and simply use two different method names, or craft your solution more carefully.
+The length member
+Because arrays are implemented as objects, each array has associated with a length instance variable that contains the number of elements that the array can hold.
+    LengthDemo.java
+
+The For-Each Style for Loop
+When working with arrays, it is so common to encounter situations in which each element in an array must be examined, from start to finish. Java defines a second form of the for loop that streamlines this operation.
+The general form of the for-each style for is shown here:
+  for(type itr-var: collection)
+    statement-block
+
+    ForEach.java
+
+There is one important point to understand about the for-each style for loop. Its iteration variable is "read-only". An assignment to the iteration variable has no effect on the underlying array.
+    NoChange.java
+
+Strings
+In some other programming languages, a string is an array of characters. This is not the case with Java. In Java, strings are objects.
+    StringDemo.java
+    StrOps.java
+
+Strings are immutable
+The contents of a String object are immutable. That is, one created the character sequence that makes up the string cannot be altered. When you need a string that is a variation on one that already exists, simply create a new string that contains the desired changes.
+
+Using a String to Control a switch statement
+From JDK 7, a String can be used to control a switch statement.
+    StringSwitch.java
+
+Using Command-Line Arguments
+Now that you know about the String class, you can understand the args parameter to main().
+    CLDemo.java
+    Phone.java

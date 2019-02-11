@@ -1,67 +1,77 @@
 Object oriented programming using Java
-Lesson 3. More Data types and operators
+Lesson 2. Introducing classes, objects, and methods
 
-One-dimensional Array
-The general form to declare a one-dimensional array:
-  type array-name[] = new type[size];
-An individual element within an array is accessed by use of an index. An index describes the position of an element within an array. In Java, all arrays have zero as the index of their first element.
-Arrays can be initialized when they are created. The general form for initializing a one dimensional array is:
-  type array-name[] = {val1, val2, ..., valN};
-An example of array initialization if provided in
-    MinMax.java
+A class is a template that defines the form of an object. It specifies both the data and the code that will operate on that data. Java uses a class specification to construct objects. Objects are instances of a class.
+The general form of a class is:
+  class classname {
+    // declare instance variables
+    type var1;
+    type var2;
+    // ...
+    type varN;
 
-Array boundaries are strictly enforced in Java. It is a run-time error to overrun or underrun the end of an array. You can confirm yourself with
-    ArrayErr.java.
+    // declare methods
+    ret-type method1(parameters) {
+      // body of method
+    }
+    ret-type method2(parameters) {
+      // body of method
+    }
+    // ...
+    ret-type methodN(parameters) {
+      // body of method
+    }
+  }
+A well-designed class should define one and only one logical entity.
+A simple class is provided in VehicleDemo.java.
+
+Create an object:
+  Vehicle minivan = new Vehicle();
 
 
-Multidimensional arrays
-    TwoD.java
+Reference variables and assignment:
+  Vehicle car1 = new Vehicle();
+  Vehicle car2 = car1;
+Now car1 and car2 will refer to the same object.
+  car1.kpl = 30;
+  System.out.println(car1.kpl);
+  System.out.println(car2.kpl);
+display the same value 30.
 
-Irregular arrays
-The use or irregular multidimensional arrays is not recommended for most applications. However, irregular arrays can be used effectively in some situations. For example, if you need a very large two dimensional array that is sparsely populated.
-    Ragged.java
+Data-only classed are perfectly valid, most classes will have methods. Methods are subroutines that manipulate the data defined by the class and, in many cases, provide access to that data.
+In well-written Java code, each method performs only once task.
+The general form of a method is:
+  ret-type name(parameter-list) {
+    // body of method
+  }
 
-Initializing multidimensional arrays
-type-specifier array_name[][] = {
-  {val, val, val, ..., val},
-  {val, val, val, ..., val},
-  ...
-  {val, val, val, ..., val}
-};
-    Squares.java
+Modified version of the Vehicle class using methods are provided in VehMethodDemo.java and FuelComp.java.
 
-Assigning array references
-As with other objects, when you assign one array reference variable to another, you are simply changing what object that variable refers to. No copy of the array will be made, the contents of one array will not be copied to the other.
-    AssignARef.java
+If the method does not return a value, its return type must be void. If the methods has no parameters, the parameter-list will be empty.
 
-The length member
-Because arrays are implemented as objects, each array has associated with a length instance variable that contains the number of elements that the array can hold.
-    LengthDemo.java
 
-The For-Each Style for Loop
-When working with arrays, it is so common to encounter situations in which each element in an array must be examined, from start to finish. Java defines a second form of the for loop that streamlines this operation.
-The general form of the for-each style for is shown here:
-  for(type itr-var: collection)
-    statement-block
+Constructors
+In the preceding examples, the instance variables of each Vehicle object had to be set manually using a sequence of statements. An approach like this is error prone, there is a better way to accomplish this task: the constructor.
+A constructor initialized an object when it is created. It has the same name as its class and is syntactically similar to a method. However, constructors have no explicit return type.
 
-    ForEach.java
+A class with a simple constructor to initialize its instance variables with default values is provided in ConsDemo.java.
+Some more examples of constructor usage can be found in ParmConsDemo.java and VehConsDemo.java.
 
-There is one important point to understand about the for-each style for loop. Its iteration variable is "read-only". An assignment to the iteration variable has no effect on the underlying array.
-    NoChange.java
+All classes have constructors, whether you define one or not, because Java automatically provides a default constructor. Once you define your own constructor, the default constructor is no longer used.
 
-Strings
-In some other programming languages, a string is an array of characters. This is not the case with Java. In Java, strings are objects.
-    StringDemo.java
-    StrOps.java
 
-Strings are immutable
-The contents of a String object are immutable. That is, one created the character sequence that makes up the string cannot be altered. When you need a string that is a variation on one that already exists, simply create a new string that contains the desired changes.
+The new operator
+The new operator can be used to create an object of any class type. The new operator returns a reference to the newly created object. The general form of the new operator is:
+  class-var = new class-name(arg-list);
 
-Using a String to Control a switch statement
-From JDK 7, a String can be used to control a switch statement.
-    StringSwitch.java
 
-Using Command-Line Arguments
-Now that you know about the String class, you can understand the args parameter to main().
-    CLDemo.java
-    Phone.java
+Garbage collection
+Java's garbage collection system reclaims objects automatically. When no references to an object exist, that object is assumed to be no longer needed, and the memory occupied by the object is released.
+
+The this keyword
+When a method is called, it is automatically passed an implicit argument that is a reference to the invoking object. This reference is called this.
+The this keyword has some important uses. For example, the Java syntax permits the name of a parameter or a local variable to be the same as the name of instance variable. When this happens, the local name hides the instance variable. You can gain access to the hidden instance variable by referring to it through this.
+
+An example with the usage of the this keyword is provided in DemoPwr.java.
+
+The class Vehicle and its instance can be modeled in UML as in vehicle.png and vehicle_instances.png
