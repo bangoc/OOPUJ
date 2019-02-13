@@ -1,5 +1,5 @@
 Object oriented programming using Java
-Lesson 2. Introducing classes, objects, and methods
+Lesson 3. Introducing classes, objects, and methods
 
 A class is a template that defines the form of an object. It specifies both the data and the code that will operate on that data. Java uses a class specification to construct objects. Objects are instances of a class.
 The general form of a class is:

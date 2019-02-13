@@ -1,5 +1,5 @@
 Object oriented programming using Java
-Lesson 3. More Data types and operators
+Lesson 4. More Data types and operators
 
 One-dimensional Array
 The general form to declare a one-dimensional array:
@@ -65,3 +65,33 @@ Using Command-Line Arguments
 Now that you know about the String class, you can understand the args parameter to main().
     CLDemo.java
     Phone.java
+
+
+The bitwise operators
+Can be used on values of type long, int, short, char, or byte. Bitwise can not be used on boolean, float, or double, or class types.
+  Operator      Result
+  &             Bitwise AND
+  |             Bitwise OR
+  ^             Bitwise exclusive OR
+  >>            Shift right
+  >>>           Unsigned shift right
+  <<            Shift left
+  ~             One's complement (unary NOT)
+    ShowBits.java
+
+
+The shift operators
+The general forms are:
+    value << num-bits
+    value >> num-bits
+    value >>> num-bits
+Each left shift causes all bits within the specified value to be shifted left one position and a 0 bit to be brought in on the right.
+Each right shift shifts all bits to the right one position and preserves the sign bit.
+If you don't want to preserve the sign bit when shifting right, you can use an unsigned right shift (>>>), which always brings in a 0 on the left.
+    ShiftDemo.java
+
+The ? operator
+The ? operator is called a ternary operator, because it requires three operand. The general form is:
+    Exp1? Exp2: Exp3;
+
+    TernaryDemo.java

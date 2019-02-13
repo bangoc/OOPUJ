@@ -1,5 +1,5 @@
 Object oriented programming using Java
-Lesson 4. A Closer look at Methods and classes
+Lesson 5. A Closer look at Methods and classes
 
 Controlling access to class members
 In its support for encapsulation, the class provides two major benefits. First, it links data with the code that manipulates it. Second, it provides the means by which access to members can be controlled.
