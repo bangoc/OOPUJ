@@ -1,77 +1,89 @@
 Object oriented programming using Java
-Lesson 3. Introducing classes, objects, and methods
+Lesson 5. A Closer look at Methods and classes
 
-A class is a template that defines the form of an object. It specifies both the data and the code that will operate on that data. Java uses a class specification to construct objects. Objects are instances of a class.
-The general form of a class is:
-  class classname {
-    // declare instance variables
-    type var1;
-    type var2;
-    // ...
-    type varN;
-
-    // declare methods
-    ret-type method1(parameters) {
-      // body of method
-    }
-    ret-type method2(parameters) {
-      // body of method
-    }
-    // ...
-    ret-type methodN(parameters) {
-      // body of method
-    }
-  }
-A well-designed class should define one and only one logical entity.
-A simple class is provided in VehicleDemo.java.
-
-Create an object:
-  Vehicle minivan = new Vehicle();
+Controlling access to class members
+In its support for encapsulation, the class provides two major benefits. First, it links data with the code that manipulates it. Second, it provides the means by which access to members can be controlled.
 
 
-Reference variables and assignment:
-  Vehicle car1 = new Vehicle();
-  Vehicle car2 = car1;
-Now car1 and car2 will refer to the same object.
-  car1.kpl = 30;
-  System.out.println(car1.kpl);
-  System.out.println(car2.kpl);
-display the same value 30.
-
-Data-only classed are perfectly valid, most classes will have methods. Methods are subroutines that manipulate the data defined by the class and, in many cases, provide access to that data.
-In well-written Java code, each method performs only once task.
-The general form of a method is:
-  ret-type name(parameter-list) {
-    // body of method
-  }
-
-Modified version of the Vehicle class using methods are provided in VehMethodDemo.java and FuelComp.java.
-
-If the method does not return a value, its return type must be void. If the methods has no parameters, the parameter-list will be empty.
+Java's access modifiers
+Member access control is achived through the use of three access modifiers: public, private, and protected. If no access modifier is used, the default access is assumed.
+When a member of a class is modified by the public specifier, the member can be accessed by any other code in a program.
+When a member of a class is specified as private, that member can be accessed only by other members of its class.
+The protected modifier applies only when inheritance is involved and is described later.
+The default access setting is the same as public unless a program is broken down into packages. A package is, essentially, a grouping of classes. Packages are both organizational and an access control feature, its detail will be provided later.
 
 
-Constructors
-In the preceding examples, the instance variables of each Vehicle object had to be set manually using a sequence of statements. An approach like this is error prone, there is a better way to accomplish this task: the constructor.
-A constructor initialized an object when it is created. It has the same name as its class and is syntactically similar to a method. However, constructors have no explicit return type.
+To understand the effects of public and private, consider
+    AccessDemo.java
 
-A class with a simple constructor to initialize its instance variables with default values is provided in ConsDemo.java.
-Some more examples of constructor usage can be found in ParmConsDemo.java and VehConsDemo.java.
+In the real world, restricting access to members - especially instance variables - is an important part of successful object-oriented programming.
+An example of using access control to provide a safe access to array elements is provided in
+    FSDemo.java
 
-All classes have constructors, whether you define one or not, because Java automatically provides a default constructor. Once you define your own constructor, the default constructor is no longer used.
+Pass objects to methods
+It is both correct and common to pass objects to methods.
+    PassOb.java
+
+How arguments are passed
+When you pass a primitive type, such as int or double, to a method, it is passed by value. Thus what occurs to the parameter that receives the argument has no effect outside the method.
+    CallByValue.java
+
+When you pass an object to a method, objects are implicitly passed by reference. As a result, the parameter that receives it will refer to the same object as that referred to by the argument. This effectively means that objects are passed to method by use of call-by-reference. Changes to the object inside the method do affect the object used as an argument.
+    PassObRef.java
+
+Returning objects
+A method can return any type of data, including class types.
+    ErrMsg.java
+
+Method Overloading
+In Java, two or more methods within the same class can share the same name, as long as their parameter declarations are different.
+There is one important restriction: the type and/or number of the parameters of each overloaded method must differ. It is not sufficient for two methods to differ only in their return types.
+When an overloaded method is called, the version of the method whose parameters match the arguments is executed.
+    OverloadDemo.java
+
+Automatic conversions apply only if there is no direct match between a parameter and an argument.
+    TypeConv.java
+
+Overloading Constructors
+Like methods, constructors can also be overloaded. Doing so allows you to construct objects in a variety of ways.
+    OverloadConsDemo.java
+
+One common reason that constructors are overloaded is to allow one object to initialize another. It is often useful to provide a constructor that makes a copy of an object.
+    SumDemo.java
+
+Understanding static
+It is possible to create a member that can be used without reference to a specific instance. When a member is declared static, it can be accessed before any objects of its class are created, and without reference to any object. Outside the class, to use a static member, you need only specify the name of its class followed by the dot operator.
+Variables declared as static are, essentially, global variables. When an object is declared, no copy of a static variable is made. Instead, all instances of the class share the same static variable.
+    SDemo.java
+    SMethodDemo.java
+
+Methods declared static have several restrictions:
+They can directly call only other static methods in their class
+They can directly access only static variables in their class
+They do not have a this reference
+    StaticError.java
+
+Sometimes a class will require some type of initialization before it is ready to create objects or initialize certain static variables before any of the class' static methods are used. To handle these types of situations, Java allows you to declare a static block. A static block is executed when the class is first loaded.
+    StaticBlockDemo.java
 
 
-The new operator
-The new operator can be used to create an object of any class type. The new operator returns a reference to the newly created object. The general form of the new operator is:
-  class-var = new class-name(arg-list);
+Nested and Inner classes
+In Java, you can define a nested class. This is a class that is declared within another class. It is also possible to declare a nested class that is local to a block.
+There are two general types of nested classes: those that are proceded by the static modifier and those that are not. But we will concern only the non-static variety. This type of nested class is also called an inner class. It has access to all of the variables and methods of its outer class.
+    NestedClassDemo.java
 
+Varargs method
+A vairable-length argument is specified by three periods (...).
+    VarArgs.java
 
-Garbage collection
-Java's garbage collection system reclaims objects automatically. When no references to an object exist, that object is assumed to be no longer needed, and the memory occupied by the object is released.
+A method can have "normal" parameters along with a variable-length parameter. However, the variable-length parameter must be the last parameter declared by the method.
+    VarArgsError.java
 
-The this keyword
-When a method is called, it is automatically passed an implicit argument that is a reference to the invoking object. This reference is called this.
-The this keyword has some important uses. For example, the Java syntax permits the name of a parameter or a local variable to be the same as the name of instance variable. When this happens, the local name hides the instance variable. You can gain access to the hidden instance variable by referring to it through this.
+Overloading Varargs methods
+You can overload a method that takes a variable-length argument.
+    VarArgsOverload.java
 
-An example with the usage of the this keyword is provided in DemoPwr.java.
-
-The class Vehicle and its instance can be modeled in UML as in vehicle.png and vehicle_instances.png
+Ambiguity
+It is possible to create an ambiguous call to an overloaded varargs method. When there are more than one methods match a call.
+    vaTest() call in VarArgsOverload.java
+When this happens, sometimes you will need to forego overloading and simply use two different method names, or craft your solution more carefully.

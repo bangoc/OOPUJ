@@ -1,189 +1,77 @@
 Object oriented programming using Java
-Lesson 2. Introducing Data types and Operators
+Lesson 3. Introducing classes, objects, and methods
 
-Why data types are important
-Data types are especially important in Java because it is a strongly typed language. This means that all operations are type-checked by the compiler for type compatibility. Illegal operations will not be compiled. Furthermore, type of a value determines what operations are allowed on it.
+A class is a template that defines the form of an object. It specifies both the data and the code that will operate on that data. Java uses a class specification to construct objects. Objects are instances of a class.
+The general form of a class is:
+  class classname {
+    // declare instance variables
+    type var1;
+    type var2;
+    // ...
+    type varN;
 
+    // declare methods
+    ret-type method1(parameters) {
+      // body of method
+    }
+    ret-type method2(parameters) {
+      // body of method
+    }
+    // ...
+    ret-type methodN(parameters) {
+      // body of method
+    }
+  }
+A well-designed class should define one and only one logical entity.
+A simple class is provided in VehicleDemo.java.
 
-Java's primitive types
-Java contains two general categories of built-in data types: object-oriented and non-object-oriented. Java's object-oriented types are defined by classes, and a discussion of classes is deferred until later. At the core of Java are eight primitive types of data, which are not objects in object-oriented sense, but rather, normal binary values, because of efficiency concerns. All of Java's other data types are constructed from these primitive types.
-  Type        Meaning
-  boolean     Represents true/false values
-  byte        8-bit integer
-  char        Character
-  double      Double-precision floating point
-  float       Single-precision floating point
-  int         Integer
-  long        long integer
-  short       Short integer
-
-
-Integers
-Java defines four integer types:
-  Type        Width in Bits
-  byte        8
-  short       16
-  int         32
-  long        64
-All of the integer types are signed, Java does not support unsigned integers.
-    IntDemo.java
-
-
-Floating-Point types
-There are two kinds of floating-point types. Type float is 32 bits wide and type double is 64 bits wide. Of the two, double is the most commonly used, and many of the math functions in Java's class library use double values.
-    Hypot.java
+Create an object:
+  Vehicle minivan = new Vehicle();
 
 
-Characters
-In Java, characters is an unsigned 16-bit type. It is possible to perform various arithmetic manipulations on a char variable.
-    CharDemo.java
+Reference variables and assignment:
+  Vehicle car1 = new Vehicle();
+  Vehicle car2 = car1;
+Now car1 and car2 will refer to the same object.
+  car1.kpl = 30;
+  System.out.println(car1.kpl);
+  System.out.println(car2.kpl);
+display the same value 30.
+
+Data-only classed are perfectly valid, most classes will have methods. Methods are subroutines that manipulate the data defined by the class and, in many cases, provide access to that data.
+In well-written Java code, each method performs only once task.
+The general form of a method is:
+  ret-type name(parameter-list) {
+    // body of method
+  }
+
+Modified version of the Vehicle class using methods are provided in VehMethodDemo.java and FuelComp.java.
+
+If the method does not return a value, its return type must be void. If the methods has no parameters, the parameter-list will be empty.
 
 
-The Boolean type
-The boolean type represents true/false values. Java defines the values true and false using the reserved words true and false. Thus, a variable or expression of type boolean will be one of these two values.
-    BoolDemo.java
+Constructors
+In the preceding examples, the instance variables of each Vehicle object had to be set manually using a sequence of statements. An approach like this is error prone, there is a better way to accomplish this task: the constructor.
+A constructor initialized an object when it is created. It has the same name as its class and is syntactically similar to a method. However, constructors have no explicit return type.
+
+A class with a simple constructor to initialize its instance variables with default values is provided in ConsDemo.java.
+Some more examples of constructor usage can be found in ParmConsDemo.java and VehConsDemo.java.
+
+All classes have constructors, whether you define one or not, because Java automatically provides a default constructor. Once you define your own constructor, the default constructor is no longer used.
 
 
-Literals
-In Java, literals refer to fixed values that are represented in human-readable form.
-By default, integer literals are of type int. If you want to specify a long literal, append an l or an L to it. For example, 12 is an int, but 12L is a long.
-By default, floating-point literals are of type double. To specify a float literal, append an F or f to the constant. For example, 10.19F is of type float.
-Beginning with JDK 7, you can embed underscores into an integer or floating-point literal to make it easier to read values consisting of many digits.
-
-Hexadecimal, Octal, and Binary literals
-The number system based on 8 is called octal. The base 16 number system is called hexadecimal. Hexadecimal literal must begin with 0x or 0X. An octal literal begins with a zero.
-  0xFF is a hexadecimal value, and is 255 in decimal.
-  011 is a octal value, and is 9 in decimal.
-
-Beginning with JDK 7, it is possible to specify an integer literal by use of binary. A binary literal begins with 0b or 0B.
-  0b1100 is a binary value, and is 12 in decimal.
-    NumberDemo.java
+The new operator
+The new operator can be used to create an object of any class type. The new operator returns a reference to the newly created object. The general form of the new operator is:
+  class-var = new class-name(arg-list);
 
 
-Character escape sequences
-Some non-printing characters, such as the carriage return, pose a special problem when a text editor used. In addition, certain other characters, such as the single and double quotes, have special meaning in Java, so you cannot use them directly. For these reasons, Java provides special escape sequences. These sequences are used in place of the characters that they represent.
-    Escape sequence   Description
-    \'                Single quote
-    \"                Double quote
-    \\                Backslash
-    \r                Carrigage return
-    \n                New line
-    \t                Horizontal tab
-    \ddd              ddd is a octal constant
-    \uxxxx            xxxx is a hexadecimal constant
+Garbage collection
+Java's garbage collection system reclaims objects automatically. When no references to an object exist, that object is assumed to be no longer needed, and the memory occupied by the object is released.
 
+The this keyword
+When a method is called, it is automatically passed an implicit argument that is a reference to the invoking object. This reference is called this.
+The this keyword has some important uses. For example, the Java syntax permits the name of a parameter or a local variable to be the same as the name of instance variable. When this happens, the local name hides the instance variable. You can gain access to the hidden instance variable by referring to it through this.
 
-String literals
-A string is a set of characters enclosed by double quotes. In addition to normal characters, a string literal can also contain one or more of the escape sequences just described.
-    StrDemo.java
+An example with the usage of the this keyword is provided in DemoPwr.java.
 
-
-Initializing a variable
-The general form of initialization is:
-  type var = value;
-Here are some examples:
-  int count = 10;
-  char ch = 'X';
-  float f = 1.23F;
-  int a, b = 8, c = 19, d;
-
-Dynamic Initialization
-Java allows variables to be initialized dynamically, using any expression valid at the time the variable is declared.
-    DynInit.java
-
-The Scope and Lifetime of Variables
-Java allows variables to be declared within any block. A block defines a scope, each time you start a new block, you are creating a new scope. A scope determines what objects are visible to other parts of your program. It also determines the lifetime of those objects.
-The most imortant scopes in Java are those defined by a class and those defined by a method. A discussion of class scope is deferred until later, when classes are described. For now, we will examine only the scopes defined by a method.
-Scope rules provide the foundation for encapsulation.
-The scope defined by a method begins with its opening curly brace. Howerver, if that method has parameters, they are included within the method's scope.
-Scopes can be nested. Variables declared inside a scope are not visible to code that is defined outside that scope, but variables declared in the outer scope will be visible to code within the inner scope.
-    ScopeDemo.java
-
-
-Within a block, variables can be declared at any point, but are valid only after they are declared.
-Variables are created when their scope is entered, and destroyed when their scope is left. Thus, the lifetime of a variable is confined to its scope. If a variable declaration includes an initializer, that variable will be reinitialized each time the block in which it is declared is entered.
-    VarInitDemo.java
-
-
-In different with C, in Java, although block can be nested, no variable declared within an inner scope can have the same name as a variable declared by an enclosing scope.
-    NestVar.java
-
-
-Operators
-An operator is a symbol that tells the compiler to perform a specific mathematical or logical manipulation. Java has four general classes of operators: arithmetic, bitwise, relational, and logical. Java also defines some additional operators that handle certain special situations.
-
-Arithmetic operators
-Operator        Meaning
-  +             Addition (also unary plus)
-  -             Subtraction (also unary minus)
-  *             Multiplication
-  /             Division
-  %             Modulus
-  ++            Increment
-  --            Decrement
-In Java, the % can be applied to both integer and floating-point types.
-    ModDemo.java
-
-Increment and Decrement
-The ++ and -- are Java's increment and decrement operators. They both can either precede (prefix) or follow (postfix) the operand. When an increment or decrement operator precedes its operand, Java will perform the corresponding operation prior to obtaining the operand's value for use by the rest of the expression. If the operator follows its operand, Java will obtain the operand's value before incrementing or decrementing it.
-
-
-Relational and Logical operators
-  The relational operators:
-    Operator          Meaning
-      ==              Equal to
-      !=              Not equal to
-      >               Greater than
-      <               Less than
-      >=              Greater than or equal to
-      <=              Less than or equal to
-  The logical operators:
-    Operator          Meaning
-    &                 AND
-    |                 OR
-    ^                 XOR
-    ||                Short-circuit OR
-    &&                Short-circuit AND
-    !                 NOT
-For the logical operators, the operands must be of type boolean, and the result of a logical operation is of type boolean.
-    RelOps.java
-    LogOps.java
-
-
-Short-circuit logical operator
-In an AND operation, if the first operand is false, the outcome is false no matter what value the second operand has. In an OR operation, if the first operand is true, the outcome is true no matter what the value of the second operand.
-The short-circuit AND is &&, and the short-circuit OR is ||. The normal version will always evaluate each operand, but short-circuit versions will evaluate the second operand only when necessary.
-    SCops.java
-
-
-The assignment operator
-General form:
-    var = expression;
-The assignment operator allows you to create a chain of assignments:
-    x = y = z = 100;  // set x, y, and z to 100
-
-
-Shorthand assignments:
-For all the binary operators in Java. The general form is:
-  var op= expression;
-The arithmetic and logical shorthand assignment operators are the following:
-  +=    -=    *=    /=    %=    &=    |=      ^=
-
-
-Type conversion in assignments
-When one type of data is assigned to another type of variable, an automatic type conversion will take place if: The two types are compatible and the destination type is larger than the source type. This is also called a widening conversion.
-    LtoD.java
-
-
-Casting incompatible types
-A cast is an instruction to the compiler to convert one type into another. A cast has this general form:
-    (target-type)expression
-When a cast involves a narrowing conversion, information might be lost.
-    CastDemo.java
-
-
-Type conversion in expressions
-Within an expression, it is possible to mix two or more different types of data as long as they are compatible with each other. In such a case, they are all converted to the same type by Java's type promotion rules.
-First, all char, byte, and short values are promoted to int. Then, if one operand is a long, the whole expression is promoted to long. If one operand is a float, the entire expression is promoted to float. If any of the operands is double, the result is double.
-    PromDemo.java
-
+The class Vehicle and its instance can be modeled in UML as in vehicle.png and vehicle_instances.png
