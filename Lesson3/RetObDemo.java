@@ -6,7 +6,7 @@ class Test {
 }
 
 class Data {
-  Test d[] = {new Test(1), new Test(2), new Test(3)};
+  private Test d[] = {new Test(1), new Test(2), new Test(3)};
   Test getData(int i) {
     return d[i];
   }
