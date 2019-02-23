@@ -1,0 +1,80 @@
+Object oriented programming using Java
+Lesson 4. Inheritance
+
+
+Inheritance basics
+Inheritance is done by using the extends keyword. The inherited class is called a superclass, and the class does the inheriting is called a subclass. The subclass inherits all of the variables and methods defined by the superclass and adds its own elements.
+    Shapes.java
+
+
+The general form of a class declaration that inherits a superclass is:
+    class subclass-name extends superclass-name {
+        // body of class
+    }
+
+
+In Java, you can specify only one superclass for any subclass that you create. Java does not support the inheritance of multiple classes.
+
+
+Member access and inheritance
+Subclassess do not have access to the private members of superclasses.
+We will introduce protected in the next lesson after packages will be described.
+
+
+Using super
+The keyword super can be used in subclasses to call a superclass constructor. The general form is:
+    super(parameters-list)
+
+The keyword super also can be used to access a member of superclass that has been hidden by a member of a subclass. The general form is:
+    super.member
+
+    UseSuper.java
+
+
+Creating a multilevel hierarchy
+You can build hierarchies that contain as many layers of inheritance as you like. In a multilevel hierarchy, super() always refers to the constructor in the closest superclass.
+    MultiLevelDemo.java
+
+
+The order of contructors
+The constructors are executed in order of derivation. If super() is not used, then the default constructor of superclass will be executed. If used, call to super must be the first statement in a constructor.
+    OrderOfConstruction.java
+
+
+Superclass references and subclass objects
+In Java superclass reference can refer to a subclass object. But a reference variable for one class type cannot normally refer to an object of another class type.
+    SupSubRef.java
+
+
+Method overriding
+In a class hierarchy, when a method in a subclass has the same return type and signature as a method in its superclass, then the method in the subclass is said to override the method in the superclass. When an overridden method is called from within a subclass, it will always refer to the version of that method defined by the subclass.
+    OverrideDemo.java
+
+
+Polymorphysim
+Method overriding forms the basis for dynamic method dispatch in Java, by which a call to an overridden method is resolved at run time. This is how Java implements runtime polymorphism.
+When an overridden method is called through a superclass reference, Java determines which version of that method to execute based upon the type of the object being referred to at the time the call occurs. When different types of objects are referred to, different verions of an overridden method will be called.
+    DynDispDemo.java
+
+
+Abstract classes
+In Java, abstract method is a solution to ensure that a subclass implement a specific method from its superclass.
+An abstract method is created by specifying the abstract modifier. An abstract method contains no body and, therefore, not implemented by the superclass. The general form to declare an abstract method is:
+    abstract type name(parameter-list);
+
+
+A class that contains one or more abstract methods must also be declared as abstract by preceding its class declaration with the abstract modifier. Attempting to create an object of an abstract class will result in a compile-time error.
+When a subclass inherits an abstract class, it must implement all the abstract methods in the superclass  or it must also be specified as abstract.
+    AbstractDemo.java
+
+
+Using final
+To prevent a method from being overridden, by any reasons, specify final as a modifier at the start of its declaration.
+You can prevent a class from being inherited by preceding its declaration with final. It implies that you can not declare a class as both abstract and final.
+The keyword final can also be applied to member variables. If you precede a class variable's name with final, you can give that variable an initial value, and its value cannot be changed throughout the lifetime of your program.
+    FinalDemo.java
+
+
+The Object class
+Java defines one special class called Object that is an implicit superclass of all other classes. So a reference of Object type can refer to an object of any classes.
+    ObjectDemo.java
