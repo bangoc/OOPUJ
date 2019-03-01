@@ -29,7 +29,7 @@ Such as packages are mirrored by directories. This raises an important question:
 First, by default, Java run-time system uses the current working directory as its starting point.
 Second, you can specify a directory path by setting the CLASSPATH environmental variable.
 Third, you can use the -classpath option with java and javac to specify the path to your classes.
-Beginning with JDK 9, a package can be part of a module, and thus found on the module path. However, a discussion of modules and module paths is deferred. For now we will use only class paths.
+Beginning with JDK 9, a package can be part of a module, and thus found on the module path. However, for now we will use only class paths, discussions of modules and module paths are deferred.
 
 
 A short example
@@ -42,6 +42,7 @@ Then try executing the class, using the following command line:
 
 Remember, you will need to be in the directory above bookpack or you will have to specify the class paths. BookDemo and Book are now part of the package bookpack. you cannot use the command line:
     java BookDemo
+This demo application consists of one file: bookpack/BookDemo.java
 
 
 Packages and member access
@@ -57,11 +58,12 @@ Second, its constructor must be made public, and finally, its show() method need
 To compile and run:
     javac bookpackext/UseBook.java
     java bookpackext.UseBook
+This demo application consists of two file: bookpack/Book.java, bookpackext/UseBook.java
 
 
 Protected members
 The protected modifier creates a member that is accessible within its package and to subclassess in other packages. Thus, a protected member is available for all subclasses to use but is still protected from access by other code outside its package.
-    ProtectedDemo
+Try codes provided in ProtectedDemo folder.
 
 
 Import packages
@@ -80,7 +82,7 @@ The general form of a classic interface is:
       type var1 = value;
       type var2 = value;
     }
-Interface methods are declared using only their return type and signature. They are, essentially, abstract methods. In an interface, methods are implicitly public.
+The access modifier is either public or not used. Interface methods are declared using only their return type and signature. They are, essentially, abstract methods. In an interface, methods are implicitly public.
 Variables declared in an interface are not instance variable. Instead they are implicitly public, final, and static and must be initialized.
 From JDK 8, it is possible to add a default implementation to an interface method.
 Beginning with JDK 9, an interface can also include private methods.
@@ -93,11 +95,13 @@ To implement an interface, includes the implements clause in a class definition 
     }
 The extends clause is optional. The methods that implement an interface must be declared public.
     SeriesDemo.java
+This demo application consists of two files: Series.java and SeriesDemo.java
 
 
 Using interface references
 You can declare a reference variable of an interface type. When you call a method on an object through an interface reference, it is the version of the method implemented by the object that is executed.
     InterfaceReference.java
+This demo application consists of two files: Series.java and InterfaceReference.java
 
 
 Extends an interface
@@ -107,9 +111,11 @@ One interface can inherit another by use of the keyword extends.
 Default interface method
 It is not necessary for an implementing class to override a default interface method.
     DefaultMethodDemo.java
+This demo application consists of two files: IID.java, DefaultMethodDemo.java
 
 
 Multiple inheritance issues
+In java one class can inherits multiple interfaces. One essential different between classes and interfaces is: class can maintain state information, but interface cannot.
 To overcome the problem with multiple inheritance, Java defines the following set of rules:
 First, in all cases a class implementation takes priority over an interface default implementation.
 Second, in cases a class inherits two interfaces that both have the same default method, if the class does not override that method, then an error will result.
@@ -119,6 +125,7 @@ It is possible to refer to a default implementation using super. The general for
 
 
 Static methods in an interface
-JDK 8 added the ability to define static methods in interface, like static methods in class.
-static interface methods are not inherited by either an implementing class or a subinterface.
+JDK 8 added the ability to define static methods in interface. It can be defined similar to static methods in class.
+However static interface methods are not inherited by either an implementing class or a subinterface.
     IStaticDemo.java
+This demo application consists of three files: IExtendedStatic.java, IStatic.java, IStaticDemo.java

@@ -11,7 +11,8 @@ class AdminImpl implements IID {
     return 99;
   }
 
-  // It is possible to override a default interface method
+  // You can override a default interface method
+  // but it is not required
   public int getAdminID() {
     return 110;
   }
