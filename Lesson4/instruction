@@ -52,6 +52,8 @@ Method overriding
 In a class hierarchy, when a method in a subclass has the same return type and signature as a method in its superclass, then the method in the subclass is said to override the method in the superclass. When an overridden method is called using a reference of superclass type, it will always refer to the version of that method defined by the most derived subclass.
     OverrideDemo.java
 
+In Java, it's not allowed to assign weaker access privileges to the version of overriding method in subclasses.
+
 
 Polymorphysim
 Method overriding forms the basis for dynamic method dispatch in Java, by which a call to an overridden method is resolved at run time. This is how Java implements runtime polymorphism.
@@ -85,3 +87,6 @@ The keyword final can also be applied to member variables. If you precede a clas
 The Object class
 Java defines one special class called Object that is an implicit superclass of all other classes. So a reference of Object type can refer to an object of any classes.
     ObjectDemo.java
+
+
+Solve problems in SelfTest.java
