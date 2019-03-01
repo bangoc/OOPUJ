@@ -1,6 +1,8 @@
 Object oriented programming using Java
 Lesson 4. Inheritance
 
+Inheritance is one of the three foundation principles of object-oriented programming. Using inheritance, you can create a general class that define common traits to a set of related item. Then this class can be inherited by more specific classes, each add those things that are unique to it.
+
 
 Inheritance basics
 Inheritance is done by using the extends keyword. The inherited class is called a superclass, and the class does the inheriting is called a subclass. The subclass inherits all of the variables and methods defined by the superclass and adds its own elements.
@@ -42,12 +44,12 @@ The constructors are executed in order of derivation. If super() is not used, th
 
 
 Superclass references and subclass objects
-In Java superclass reference can refer to a subclass object. But a reference variable for one class type cannot normally refer to an object of another class type.
+Java is a strongly typed language, it means, basically a reference variable for one class type cannot normally refer to an object of another class type. However there is one importane exception, superclass reference can refer to a subclass object.
     SupSubRef.java
 
 
 Method overriding
-In a class hierarchy, when a method in a subclass has the same return type and signature as a method in its superclass, then the method in the subclass is said to override the method in the superclass. When an overridden method is called from within a subclass, it will always refer to the version of that method defined by the subclass.
+In a class hierarchy, when a method in a subclass has the same return type and signature as a method in its superclass, then the method in the subclass is said to override the method in the superclass. When an overridden method is called using a reference of superclass type, it will always refer to the version of that method defined by the most derived subclass.
     OverrideDemo.java
 
 
@@ -55,6 +57,11 @@ Polymorphysim
 Method overriding forms the basis for dynamic method dispatch in Java, by which a call to an overridden method is resolved at run time. This is how Java implements runtime polymorphism.
 When an overridden method is called through a superclass reference, Java determines which version of that method to execute based upon the type of the object being referred to at the time the call occurs. When different types of objects are referred to, different verions of an overridden method will be called.
     DynDispDemo.java
+
+
+Superclass method overloads in subclasses
+In a subclass you can create different overloads for methods those are inherited from its superclass. But like other subclass methods, you can not call them through a superclass reference.
+    OverloadDemo.java
 
 
 Abstract classes
@@ -70,7 +77,7 @@ When a subclass inherits an abstract class, it must implement all the abstract m
 
 Using final
 To prevent a method from being overridden, by any reasons, specify final as a modifier at the start of its declaration.
-You can prevent a class from being inherited by preceding its declaration with final. It implies that you can not declare a class as both abstract and final.
+You can also prevent a class from being inherited by preceding its declaration with final. It implies that you can not declare a class as both abstract and final.
 The keyword final can also be applied to member variables. If you precede a class variable's name with final, you can give that variable an initial value, and its value cannot be changed throughout the lifetime of your program.
     FinalDemo.java
 
