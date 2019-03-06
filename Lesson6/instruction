@@ -1,0 +1,97 @@
+Object oriented programming using Java
+Lesson 6. Exception Handling
+
+
+An exception is an error that occurs at run time. Using Java's exception handling subsystem you can, in a structured and controlled manner, handle run-time errors.
+
+
+The exception hierarchy
+All exception classes are derived from a class called Throwable.
+There are two direct subclasses of Throwable: Exception and Error.
+Exceptions of type Error are related to errors that occur in the Java Virtual Machine itself, they are beyond your control. Thus, these types of exceptions are not described here.
+
+
+Exception handling fundamentals
+Java exception handling is managed via five interrelated keywords: try, catch, throw, throws, and finally.
+If an exception occurs within the try block, it is thrown. Your code can catch this exception. To throw an exception, use the keyword throw. An exception is thrown out of a method must be specified as such by a throws clause. Any code that must be executed upon exiting from a try block is put in a finally block.
+
+Using try and catch
+The general form of try/catch block is:
+  try {
+    // block of code to monitor for errors
+  }
+  catch (ExcepType1 exOb) {
+    // handler 1
+  }
+  catch (ExcepType2 exOb) {
+    // hanler 2
+  }
+If an exception is thrown and its type matches the type specified by a catch statement, then that catch statement is executed (and all other are by passed).
+If no exception is thrown, then a try block ends normally. Execution resumes with the first statement after the last catch.
+    ExcDemo.java
+    ContinueAfterExc.java
+
+
+Uncaught exception
+If your program does not catch an exeption, then it will be caught by the JVM. The trouble is that the JVM's default handler termintes execution and displays a stack trace and error message.
+    NotHandled.java
+    TypeMismatch.java
+
+
+Subclass exceptions
+A catch clause for a superclass will also match any of its subclasses. So, if you want to catch exceptions of both a superclass type and a subclass type in one try, put the subclass first in the catch sequence.
+    CatchOrder.java
+In Java, unreachable code is an error.
+
+
+Nested try blocks
+An exception generated within inner try block that is not caught by a catch associated with that try is propagated to the outer try block.
+    NestTrys.java
+You might use an outer try block to catch the most severe errors, allowing inner try blocks to handle less serious ones.
+
+
+Throwing an exception
+The general form to throw an exception is:
+  throw exceptOb;
+Here, exceptOb must be an object of an exception class derived from Throwable
+    ThrowDemo.java
+
+
+Rethrowing an exception
+An exception caught by one catch statement can be rethrown so that it can be caught by an outer catch.
+    RethrowDemo.java
+
+
+The Throwable class
+Some commonly used methods defined by Throwable are provided in throwable.png
+    ThrowableDemo.java
+
+
+Using finally
+To specify a block of code to execute when a try/catch block is exited, include a finally block at the end of a try/catch sequence. The general form of a try/catch that includes finally is:
+    try {
+      // ...
+    } catch (ExceptionType exOb) {
+      // ...
+    }
+    // ...
+    finally {
+      // finally code
+    }
+The finally block will be executed whenever execution leaves a try/catch block, no matter what conditions cause it.
+    UseFinally.java
+
+
+Using throws
+If a method generates an exception that it does not handle, it must declare that exception in a throws clause. The general form is
+    ret-type methName(param-list) throws except-list {
+      ///
+    }
+But there is an exception for this rule, that it's not required to list subclasses of Error or RuntimeException in a throws list.
+    ThrowsDemo.java
+
+
+Multi-catch
+Beginning with JDK 7, you can catch two or more exceptions with the same catch clause.
+    MulticatchDemo.java
+Parameter of a multi-catch clause is implicitly final.
