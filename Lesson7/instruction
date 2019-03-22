@@ -3,3 +3,9 @@ Sử dụng công cụ vẽ các biểu đồ lớp và biểu đồ tuần tự
 	và
 	tick_seq_mvc.jpg
 phân tích và triển khai mô hình đã cho trên Java, sử dụng giao diện dòng lệnh, không cần tạo cửa sổ.
+
+Mô tả thông điệp:
+  tick: đếm thời gian, tăng thời gian lên 1 phút và hiển thị thời gian mới ra màn hình.
+  advance: tăng thời gian lên 1 phút
+  repaint: hiển thị ra màn hình thời gian hiện tại
+  getMinutes: trả về thời gian hiện tại tính bằng phút..
