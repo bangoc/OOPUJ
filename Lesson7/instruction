@@ -1,0 +1,5 @@
+Sử dụng công cụ vẽ các biểu đồ lớp và biểu đồ tuần tự như trong:
+	clock_class_diagram.jpg 
+	và
+	tick_seq_mvc.jpg
+phân tích và triển khai mô hình đã cho trên Java, sử dụng giao diện dòng lệnh, không cần tạo cửa sổ.
