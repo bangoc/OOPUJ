@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'Calculator'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+mainClassName = 'CalculatorMain'
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    // https://mvnrepository.com/artifact/com.intellij/forms_rt
+    compile group: 'com.intellij', name: 'forms_rt', version: '7.0.3'
+    // https://mvnrepository.com/artifact/net.objecthunter/exp4j
+    compile group: 'net.objecthunter', name: 'exp4j', version: '0.4.8'
+}
