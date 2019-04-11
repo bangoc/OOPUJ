@@ -1,0 +1,62 @@
+Object oriented programming using Java
+Lesson 9. Aggregation and Composition, Using I/O
+
+Java programs perform I/O through streams. An I/O stream is an abstraction that either produces or consumes information. A stream is linked to a physical device by the Java I/O system.
+Java implements I/O streams within class hierarchies defined in the java.io package.
+
+
+Byte streams and character streams
+Modern versions of Java define two types of I/O streams: byte and character. Byte streams provide a convenitent means for handling input and output of bytes. Character streams are designed for handling the input and output of characters.
+For the most part, the functionality of byte streams is paralleled by that of the character streams. At the lowest level, all I/O is still byte-oriented.
+
+
+The Byte Stream Classes
+Byte streams are defined by using two class hierarchies. At the top of these are two abstract classes: InputStream and OutputStream.
+    byteinputstreamhierarchy.jpg
+    byteoutputstreamhierarchy.jpg
+Don't be overwhelmed by the number of different classes. Once you can use one byte stream, the others are easy to master.
+
+
+The Character Stream Classes
+Character streams are defined by using two class hierarchies topped by these two abstract classes: Reader and Writer. Reader is used for input, and Writer is used for output.
+    charinputstreamhierarchy.jpg
+    charoutputstreamhierarchy.jpg
+
+
+The Predefined Streams
+All Java programs automatically import the java.lang package. This package defined a class called System, it contains three predefined stream variables, called in, out, and err.
+System.out refers to the standard output stream.
+System.in refers to the standard input stream.
+System.err refers to the standard error stream.
+System.in is an object of type InputStream; System.out and System.err are objects of type PrintStream. These are byte streams, even though they are typically used to read write characters from and to the console.
+
+Using the Byte Streams
+In gerneral, the methods in InputStream and OutputStream can throw an IOException on error. The methods defined by these two abstract classes are available to all of their subclasses.
+  InputStream.png
+  OutputStream.png
+
+
+Reading Console Input
+Originally, the only way to perform console input was to use a byte stream. Today, you can use byte or character streams.
+Because System.in is an instance of InputStream, you automatically have access to the methods defined in
+    InputStream.png
+
+Read an array of bytes from the keyboard
+    ReadBytes.java
+
+
+Writing Console Output
+Since PrintStream is an output stream derived from OutputStream, it also implement the low-level method write(). However, you will not often use write() to perform console output, since print() and println() are substantially easier to use.
+
+
+Reading and Writing Files using Byte Streams
+FileInputStream and FileOutputStream can be used to read and write files. Here are some commonly used constructor:
+  FileInputStream(String fileName) throws FileNotFoundException
+  FileOutputStream(String fileName) throws FileNotFoundException
+An usage example to copy file:
+  CopyFile.java
+
+try-with-resource provides a simpler way to close file.
+  CopyFileTWR.java
+
+
