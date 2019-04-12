@@ -1,12 +1,12 @@
 Object oriented programming using Java
 Lesson 9. Aggregation and Composition, Using I/O
 
-/*
-  TODO: Code reuse via Composition and the Decorator pattern,
-        and its relations with character based stream
+Aggregation, Composition and code reuse
+For a good example about the usage of aggregation and composition to achive code reusability
+    decorator.png
+With the decorator pattern you can extend an object behavior at runtime by wrapping it with a decorator object.
+    DecoratorDemo
 
-        will be added a little later.
-*/
 
 Java programs perform I/O through streams. An I/O stream is an abstraction that either produces or consumes information. A stream is linked to a physical device by the Java I/O system.
 Java implements I/O streams within class hierarchies defined in the java.io package.
