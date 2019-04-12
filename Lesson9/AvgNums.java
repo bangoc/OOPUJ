@@ -1,6 +1,9 @@
+/*
+  Drills: Doc du lieu tu tep (vi du data.txt) thay vi doc tu ban phim
+*/
 import java.io.*;
-class AvgNum {
-  public static void main(String args[])
+class AvgNums {
+  public static void main(String argv[])
       throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     String str;
