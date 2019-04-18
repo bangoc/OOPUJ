@@ -1,0 +1,73 @@
+Object Oriented Programming using Java
+Lesson 10. Generics
+
+Generics means parameterized types. They enable you to create classes, interfaces, and methods in which the type of data upon which they operate is specified as a parameter.
+A class, interface, or method that operates on a type parameter is called generic, as generic class, generic interface, or generic method.
+
+
+Generics work only with reference types
+Generic types differ based on their type arguments
+
+
+Here is the syntax for declaring a generic class
+    class class-name<type-param-list> {...}
+
+To create an instance:
+    class-name<type-arg-list> var-name =
+        new class-name<type-arg-list>(cons-arg-list);
+
+
+Bounded type
+When specifying a type parameter, you can create an upper bound that declares the superclass from which all type arguments must be derived.
+    <T extends superclass>
+
+
+Wildcard arguments
+    boolean absEqual(Gen<?> obj);
+    boolean absEqual(Gen<? extends Number> obj);
+
+
+Generics methods
+  Syntax for a generic method:
+    <type-param-list> ret-type meth-name(param-list) {//...}
+
+
+Generic interface
+    interface interface-name<type-param-list> { //... }
+
+
+Type inference with the Diamond Operator
+  From JDK7, you can create an instance without repeating the type-arg-list twice, you can write:
+    class-name<type-arg-list> var-name =
+          new class-name<>(cons-arg-list);
+
+Type inference an also be applied to parameter passing:
+    boolean isSame(Gen<T> obj) {...}
+
+    obj1.isSame(new Gen<>(100));
+
+
+Erasure
+When your Java code is compiled, all generic type information is removed. This means replacing type parameters with their bound type, which is Object if no explicit bound is specified, and then applying appropriate casts.
+
+Raw type
+A raw type is not type safe. Thus, a variable of a raw type can be assigned a reference to any type of Gen object. The reverse is also allowed. However both operations are potentially unsafe.
+    Raw.java
+
+
+Ambiguity errors
+Due to erasure, the following code will not be compiled:
+    class MyGen<T, V> {
+      void foo(T t) {}
+      void foo(V v) {}
+    }
+Because erasure reduce both versions to
+      void foo(Object obj);
+
+
+Some Generics restrictions
+    Type parameters can't be instantiated
+    No static member can use a declared type parameter
+    You cannot instantiate an array whose element type is a type parameter
+    You cannot create an array of type-specific generic references
+    A generic class cannot extend Throwable.
