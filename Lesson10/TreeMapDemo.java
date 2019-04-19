@@ -1,3 +1,7 @@
+/*
+  Read and write a dictionary file
+*/
+
 import java.util.TreeMap;
 
 class TreeMapDemo {

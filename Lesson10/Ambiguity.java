@@ -1,3 +1,6 @@
+/*
+  Compile this file and explain the error
+*/
 class MyGen<T, V> {
   void foo(T t) {
   }

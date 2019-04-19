@@ -64,6 +64,8 @@ Due to erasure, the following code will not be compiled:
 Because erasure reduce both versions to
       void foo(Object obj);
 
+    Ambiguity.java
+
 
 Some Generics restrictions
     Type parameters can't be instantiated
