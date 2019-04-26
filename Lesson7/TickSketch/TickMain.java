@@ -3,6 +3,8 @@ class TickMain {
     ClockView view = new ClockView();
     ClockControl control = new ClockControl();
     ClockModel model = new ClockModel();
+
+    // Su dung ham tao va viet lai doan nay
     view.model = model;
     control.view = view;
     control.model = model;

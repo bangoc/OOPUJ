@@ -2,3 +2,5 @@ Object oriented programming using Java
 Lesson 11. UML Diagrams
 
 Draw class diagrams and sequence diagrams for applications in the previous lessons.
+
+Vẽ biểu lớp cho các lớp ClockControl, ClockModel, ClockView, và TickMain.
