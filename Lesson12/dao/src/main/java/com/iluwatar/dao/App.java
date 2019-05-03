@@ -23,17 +23,16 @@
 
 package com.iluwatar.dao;
 
-import java.sql.Connection;
+
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-import javax.sql.DataSource;
+import com.mock.Connection;
+import com.mock.DataSource;
+import com.mock.Statement;
 
-import org.apache.log4j.Logger;
-import org.h2.jdbcx.JdbcDataSource;
 
 /**
  * Data Access Object (DAO) is an object that provides an abstract interface to some type of
@@ -43,29 +42,34 @@ import org.h2.jdbcx.JdbcDataSource;
  * application needs, in terms of domain-specific objects and data types (the public interface of
  * the DAO), from how these needs can be satisfied with a specific DBMS.
  *
- * <p>With the DAO pattern, we can use various method calls to retrieve/add/delete/update data 
- * without directly interacting with the data source. The below example demonstrates basic CRUD 
+ * <p>With the DAO pattern, we can use various method calls to retrieve/add/delete/update data
+ * without directly interacting with the data source. The below example demonstrates basic CRUD
  * operations: select, add, update, and delete.
- * 
- * 
+ *
+ *
  */
 public class App {
   private static final String DB_URL = "jdbc:h2:~/dao";
-  private static Logger log = Logger.getLogger(App.class);
-  
+
   /**
    * Program entry point.
-   * 
+   *
    * @param args command line args.
-   * @throws Exception if any error occurs. 
+   * @throws Exception if any error occurs.
    */
   public static void main(final String[] args) throws Exception {
     final CustomerDao inMemoryDao = new InMemoryCustomerDao();
     performOperationsUsing(inMemoryDao);
-    
+
     final DataSource dataSource = createDataSource();
     createSchema(dataSource);
     final CustomerDao dbDao = new DbCustomerDao(dataSource);
+    /*
+    All sql classes were changed to their mock classes to
+    simplify the build process.
+    The project can be built simply with javac, but the
+    original behavior was changed
+    */
     performOperationsUsing(dbDao);
     deleteSchema(dataSource);
   }
@@ -85,30 +89,28 @@ public class App {
   }
 
   private static DataSource createDataSource() {
-    JdbcDataSource dataSource = new JdbcDataSource();
-    dataSource.setURL(DB_URL);
-    return dataSource;
+    return new DataSource();
   }
 
   private static void performOperationsUsing(final CustomerDao customerDao) throws Exception {
     addCustomers(customerDao);
-    log.info("customerDao.getAllCustomers(): ");
+    System.out.println("customerDao.getAllCustomers(): ");
     try (Stream<Customer> customerStream = customerDao.getAll()) {
-      customerStream.forEach((customer) -> log.info(customer));
+      customerStream.forEach((customer) -> System.out.println(customer));
     }
-    log.info("customerDao.getCustomerById(2): " + customerDao.getById(2));
+    System.out.println("customerDao.getCustomerById(2): " + customerDao.getById(2));
     final Customer customer = new Customer(4, "Dan", "Danson");
     customerDao.add(customer);
-    log.info("customerDao.getAllCustomers(): " + customerDao.getAll());
+    System.out.println("customerDao.getAllCustomers(): " + customerDao.getAll());
     customer.setFirstName("Daniel");
     customer.setLastName("Danielson");
     customerDao.update(customer);
-    log.info("customerDao.getAllCustomers(): ");
+    System.out.println("customerDao.getAllCustomers(): ");
     try (Stream<Customer> customerStream = customerDao.getAll()) {
-      customerStream.forEach((cust) -> log.info(cust));
+      customerStream.forEach((cust) -> System.out.println(cust));
     }
     customerDao.delete(customer);
-    log.info("customerDao.getAllCustomers(): " + customerDao.getAll());
+    System.out.println("customerDao.getAllCustomers(): " + customerDao.getAll());
   }
 
   private static void addCustomers(CustomerDao customerDao) throws Exception {
@@ -119,7 +121,7 @@ public class App {
 
   /**
    * Generate customers.
-   * 
+   *
    * @return list of customers.
    */
   public static List<Customer> generateSampleCustomers() {
