@@ -1,0 +1,12 @@
+Object oriented programming using Java
+Lesson 12. Interaction diagrams
+
+1. Draw class diagram, sequence diagram, and communication diagram for the Observer.
+    observer_class.png
+    observer_sequence.png
+The communication diagram for observer is missing, please figure it out by yourself.
+
+
+2. Do reverse engineering
+Draw class diagram, sequence diagram, and communication diagram for the dao project.
+    dao
