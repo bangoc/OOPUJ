@@ -22,6 +22,7 @@ The layout manager controls the position of component within a container
 
 Event Listeners
 A listener is an object that is notified when an event occurs. First, it must have registered with one or more sources to receive a specific type of event. Second, it must implement a method to receive and process that event.
+    EventListener.png
 
 
 Some Swing Application
@@ -30,3 +31,6 @@ Some Swing Application
     TFDemo.java
     CBDemo.java
     ListDemo.java
+
+Excercise, create a form using Swing
+    NewClient.png
