@@ -1,0 +1,32 @@
+Object-Oriented Programming using Java
+Lesson 13. Introducing Swing
+
+Basics
+https://docs.oracle.com/javase/tutorial/java/javaOO/anonymousclasses.html
+    Anonym.java
+
+
+Components and Containers
+Conceptually, a Swing GUI consists of two key items: components and containers.
+A container is a special type of component that is designed to hold other components.
+In order for a component to be displayed, it must be held within a container.
+Thus, all Swing GUIs will have at least one container.
+Because containers are components, a container can also hold other containers.
+    SwingComponents.png
+
+
+Layout Managers
+The layout manager controls the position of component within a container
+    layout.png
+
+
+Event Listeners
+A listener is an object that is notified when an event occurs. First, it must have registered with one or more sources to receive a specific type of event. Second, it must implement a method to receive and process that event.
+
+
+Some Swing Application
+    SwingDemo.java
+    ButtonDemo.java
+    TFDemo.java
+    CBDemo.java
+    ListDemo.java
